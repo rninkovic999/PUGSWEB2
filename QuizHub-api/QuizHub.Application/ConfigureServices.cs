@@ -1,7 +1,9 @@
-﻿using QuizHub.Application.Common.Behaviours;
-using FluentValidation;
+﻿using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using QuizHub.Application.Common.Behaviours;
+using QuizHub.Domain.Settings;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +15,15 @@ namespace QuizHub.Application
 {
     public static class ConfigureServices
     {
-        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services, ConfigurationManager configuration)
         {
+            services.Configure<TokenServiceProviderSettings>(config =>
+            {
+                config.Issuer = configuration["TokenServiceProvider:Issuer"];
+                config.Audience = configuration["TokenServiceProvider:Audience"];
+                config.Secret = configuration["TokenServiceProvider:Secret"];
+            });
+
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
