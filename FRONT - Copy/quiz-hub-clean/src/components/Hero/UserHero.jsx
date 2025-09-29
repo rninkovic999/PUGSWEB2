@@ -4,11 +4,14 @@ const UserHero = () => {
   return (
     <div className="bg-gray-900 py-16">
       <div className="max-w-4xl mx-auto text-center px-4">
-        <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
-          <span className="text-yellow-400">Dobrodošli</span> nazad!
+        {/* Veliki žuti upitnici kao logo (!!!) */}
+        <h1 className="text-7xl md:text-9xl font-extrabold mb-4 leading-none">
+          <span className="text-yellow-400">???</span>
         </h1>
-        <p className="text-xl text-gray-300 tracking-wide max-w-2xl mx-auto">
-          Nastavite tamo gde si stali ili istražite nove kvizove!!
+        
+        {/* Žuti tekst "QuizHub" ispod loga */}
+        <p className="text-4xl md:text-5xl font-extrabold tracking-widest text-yellow-400">
+          QuizHub
         </p>
       </div>
     </div>

@@ -31,7 +31,7 @@ const GlobalLeaderboard = () => {
     <div className="min-h-screen bg-gray-900 px-4 py-8">
       <div className="max-w-3xl mx-auto pt-16">
         <h1 className="text-4xl font-bold mb-8 text-center text-white">
-          Globalna Lista
+          Ukupna rang lista
         </h1>
         
         {users.length === 0 ? (

@@ -1,0 +1,188 @@
+<svg viewBox="0 0 1600 1200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Definitions for gradients and shadows -->
+  <defs>
+    <linearGradient id="systemGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8f9fa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e9ecef;stop-opacity:1" />
+    </linearGradient>
+    
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="2" dy="2" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <radialGradient id="userGradient">
+      <stop offset="0%" style="stop-color:#bbdefb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1976d2;stop-opacity:1" />
+    </radialGradient>
+    
+    <radialGradient id="adminGradient">
+      <stop offset="0%" style="stop-color:#e1bee7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7b1fa2;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1600" height="1200" fill="#ffffff"/>
+  
+  <!-- System boundary with shadow -->
+  <rect x="280" y="70" width="1040" height="1020" fill="url(#systemGradient)" stroke="#495057" stroke-width="3" rx="15" filter="url(#shadow)"/>
+  <text x="800" y="50" font-size="32" font-weight="bold" text-anchor="middle" fill="#212529" font-family="Arial, sans-serif">KvizHub System</text>
+  
+  <!-- Actor: Korisnik -->
+  <g filter="url(#shadow)">
+    <circle cx="140" cy="100" r="32" fill="url(#userGradient)" stroke="#0d47a1" stroke-width="2.5"/>
+    <line x1="140" y1="132" x2="140" y2="200" stroke="#0d47a1" stroke-width="3.5"/>
+    <line x1="140" y1="155" x2="95" y2="185" stroke="#0d47a1" stroke-width="3.5"/>
+    <line x1="140" y1="155" x2="185" y2="185" stroke="#0d47a1" stroke-width="3.5"/>
+    <line x1="140" y1="200" x2="95" y2="245" stroke="#0d47a1" stroke-width="3.5"/>
+    <line x1="140" y1="200" x2="185" y2="245" stroke="#0d47a1" stroke-width="3.5"/>
+  </g>
+  <text x="140" y="275" font-size="20" font-weight="bold" text-anchor="middle" fill="#0d47a1" font-family="Arial, sans-serif">Korisnik</text>
+  
+  <!-- Actor: Admin -->
+  <g filter="url(#shadow)">
+    <circle cx="1460" cy="100" r="32" fill="url(#adminGradient)" stroke="#4a148c" stroke-width="2.5"/>
+    <line x1="1460" y1="132" x2="1460" y2="200" stroke="#4a148c" stroke-width="3.5"/>
+    <line x1="1460" y1="155" x2="1415" y2="185" stroke="#4a148c" stroke-width="3.5"/>
+    <line x1="1460" y1="155" x2="1505" y2="185" stroke="#4a148c" stroke-width="3.5"/>
+    <line x1="1460" y1="200" x2="1415" y2="245" stroke="#4a148c" stroke-width="3.5"/>
+    <line x1="1460" y1="200" x2="1505" y2="245" stroke="#4a148c" stroke-width="3.5"/>
+  </g>
+  <text x="1460" y="275" font-size="20" font-weight="bold" text-anchor="middle" fill="#4a148c" font-family="Arial, sans-serif">Admin</text>
+  
+  <!-- Use Cases - Korisnik (Left side) -->
+  
+  <!-- Registracija -->
+  <ellipse cx="480" cy="150" rx="110" ry="42" fill="#e3f2fd" stroke="#1976d2" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="480" y="156" font-size="15" font-weight="600" text-anchor="middle" fill="#0d47a1" font-family="Arial, sans-serif">Registracija</text>
+  
+  <!-- Include za Registraciju -->
+  <ellipse cx="700" cy="150" rx="100" ry="35" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#shadow)"/>
+  <text x="700" y="148" font-size="12" font-weight="500" text-anchor="middle" fill="#1b5e20" font-family="Arial, sans-serif">Validacija</text>
+  <text x="700" y="163" font-size="12" font-weight="500" text-anchor="middle" fill="#1b5e20" font-family="Arial, sans-serif">podataka</text>
+  
+  <ellipse cx="700" cy="220" rx="100" ry="35" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#shadow)"/>
+  <text x="700" y="218" font-size="12" font-weight="500" text-anchor="middle" fill="#1b5e20" font-family="Arial, sans-serif">Heširanje</text>
+  <text x="700" y="233" font-size="12" font-weight="500" text-anchor="middle" fill="#1b5e20" font-family="Arial, sans-serif">lozinke</text>
+  
+  <!-- Prijava -->
+  <ellipse cx="480" cy="280" rx="110" ry="42" fill="#e3f2fd" stroke="#1976d2" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="480" y="286" font-size="15" font-weight="600" text-anchor="middle" fill="#0d47a1" font-family="Arial, sans-serif">Prijava</text>
+  
+  <!-- Include za Prijavu -->
+  <ellipse cx="700" cy="280" rx="110" ry="35" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#shadow)"/>
+  <text x="700" y="278" font-size="12" font-weight="500" text-anchor="middle" fill="#1b5e20" font-family="Arial, sans-serif">JWT</text>
+  <text x="700" y="293" font-size="12" font-weight="500" text-anchor="middle" fill="#1b5e20" font-family="Arial, sans-serif">autentifikacija</text>
+  
+  <!-- Pregled kvizova -->
+  <ellipse cx="480" cy="380" rx="120" ry="42" fill="#e3f2fd" stroke="#1976d2" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="480" y="386" font-size="15" font-weight="600" text-anchor="middle" fill="#0d47a1" font-family="Arial, sans-serif">Pregled kvizova</text>
+  
+  <!-- Filtriranje kvizova -->
+  <ellipse cx="480" cy="460" rx="125" ry="42" fill="#bbdefb" stroke="#1976d2" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="480" y="466" font-size="15" font-weight="600" text-anchor="middle" fill="#0d47a1" font-family="Arial, sans-serif">Filtriranje kvizova</text>
+  
+  <!-- Pretraga kvizova -->
+  <ellipse cx="480" cy="540" rx="120" ry="42" fill="#bbdefb" stroke="#1976d2" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="480" y="546" font-size="15" font-weight="600" text-anchor="middle" fill="#0d47a1" font-family="Arial, sans-serif">Pretraga kvizova</text>
+  
+  <!-- Rešavanje kviza -->
+  <ellipse cx="480" cy="650" rx="120" ry="42" fill="#e3f2fd" stroke="#1976d2" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="480" y="656" font-size="15" font-weight="600" text-anchor="middle" fill="#0d47a1" font-family="Arial, sans-serif">Rešavanje kviza</text>
+  
+  <!-- Include za Rešavanje -->
+  <ellipse cx="700" cy="620" rx="80" ry="35" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#shadow)"/>
+  <text x="700" y="626" font-size="12" font-weight="500" text-anchor="middle" fill="#1b5e20" font-family="Arial, sans-serif">Tajmer</text>
+  
+  <ellipse cx="700" cy="680" rx="110" ry="35" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#shadow)"/>
+  <text x="700" y="678" font-size="12" font-weight="500" text-anchor="middle" fill="#1b5e20" font-family="Arial, sans-serif">Automatsko</text>
+  <text x="700" y="693" font-size="12" font-weight="500" text-anchor="middle" fill="#1b5e20" font-family="Arial, sans-serif">bodovanje</text>
+  
+  <!-- Pregled rezultata -->
+  <ellipse cx="480" cy="760" rx="125" ry="42" fill="#e3f2fd" stroke="#1976d2" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="480" y="766" font-size="15" font-weight="600" text-anchor="middle" fill="#0d47a1" font-family="Arial, sans-serif">Pregled rezultata</text>
+  
+  <!-- Pregled ličnih rezultata -->
+  <ellipse cx="480" cy="850" rx="140" ry="42" fill="#e3f2fd" stroke="#1976d2" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="480" y="856" font-size="15" font-weight="600" text-anchor="middle" fill="#0d47a1" font-family="Arial, sans-serif">Pregled ličnih rezultata</text>
+  
+  <!-- Pregled rang liste -->
+  <ellipse cx="480" cy="940" rx="125" ry="42" fill="#e3f2fd" stroke="#1976d2" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="480" y="946" font-size="15" font-weight="600" text-anchor="middle" fill="#0d47a1" font-family="Arial, sans-serif">Pregled rang liste</text>
+  
+  <!-- Pristup live takmičenju -->
+  <ellipse cx="480" cy="1020" rx="145" ry="42" fill="#fff3e0" stroke="#ef6c00" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="480" y="1026" font-size="15" font-weight="600" text-anchor="middle" fill="#e65100" font-family="Arial, sans-serif">Pristup live takmičenju</text>
+  
+  <!-- Include za Live -->
+  <ellipse cx="730" cy="1020" rx="130" ry="35" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#shadow)"/>
+  <text x="730" y="1018" font-size="12" font-weight="500" text-anchor="middle" fill="#1b5e20" font-family="Arial, sans-serif">WebSocket</text>
+  <text x="730" y="1033" font-size="12" font-weight="500" text-anchor="middle" fill="#1b5e20" font-family="Arial, sans-serif">komunikacija</text>
+  
+  <!-- Use Cases - Admin (Right side) -->
+  
+  <!-- Kreiranje kviza -->
+  <ellipse cx="1100" cy="180" rx="115" ry="42" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="1100" y="186" font-size="15" font-weight="600" text-anchor="middle" fill="#4a148c" font-family="Arial, sans-serif">Kreiranje kviza</text>
+  
+  <!-- Uređivanje kviza -->
+  <ellipse cx="1100" cy="260" rx="115" ry="42" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="1100" y="266" font-size="15" font-weight="600" text-anchor="middle" fill="#4a148c" font-family="Arial, sans-serif">Uređivanje kviza</text>
+  
+  <!-- Brisanje kviza -->
+  <ellipse cx="1100" cy="340" rx="110" ry="42" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="1100" y="346" font-size="15" font-weight="600" text-anchor="middle" fill="#4a148c" font-family="Arial, sans-serif">Brisanje kviza</text>
+  
+  <!-- Kreiranje pitanja -->
+  <ellipse cx="1100" cy="450" rx="115" ry="42" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="1100" y="456" font-size="15" font-weight="600" text-anchor="middle" fill="#4a148c" font-family="Arial, sans-serif">Kreiranje pitanja</text>
+  
+  <!-- Uređivanje pitanja -->
+  <ellipse cx="1100" cy="530" rx="120" ry="42" fill="#e1bee7" stroke="#7b1fa2" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="1100" y="536" font-size="15" font-weight="600" text-anchor="middle" fill="#4a148c" font-family="Arial, sans-serif">Uređivanje pitanja</text>
+  
+  <!-- Brisanje pitanja -->
+  <ellipse cx="1100" cy="610" rx="115" ry="42" fill="#e1bee7" stroke="#7b1fa2" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="1100" y="616" font-size="15" font-weight="600" text-anchor="middle" fill="#4a148c" font-family="Arial, sans-serif">Brisanje pitanja</text>
+  
+  <!-- Kategorizacija kvizova -->
+  <ellipse cx="1100" cy="720" rx="135" ry="42" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="1100" y="726" font-size="15" font-weight="600" text-anchor="middle" fill="#4a148c" font-family="Arial, sans-serif">Kategorizacija kvizova</text>
+  
+  <!-- Pregled svih rezultata -->
+  <ellipse cx="1100" cy="820" rx="135" ry="42" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="1100" y="826" font-size="15" font-weight="600" text-anchor="middle" fill="#4a148c" font-family="Arial, sans-serif">Pregled svih rezultata</text>
+  
+  <!-- Kreiranje live sobe -->
+  <ellipse cx="1100" cy="920" rx="125" ry="42" fill="#fff3e0" stroke="#ef6c00" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="1100" y="926" font-size="15" font-weight="600" text-anchor="middle" fill="#e65100" font-family="Arial, sans-serif">Kreiranje live sobe</text>
+  
+  <!-- Include za Live sobu -->
+  <ellipse cx="900" cy="920" rx="130" ry="35" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#shadow)"/>
+  <text x="900" y="918" font-size="12" font-weight="500" text-anchor="middle" fill="#1b5e20" font-family="Arial, sans-serif">WebSocket</text>
+  <text x="900" y="933" font-size="12" font-weight="500" text-anchor="middle" fill="#1b5e20" font-family="Arial, sans-serif">komunikacija</text>
+  
+  <!-- Legend -->
+  <rect x="300" y="1120" width="1000" height="60" fill="white" stroke="#adb5bd" stroke-width="2.5" rx="10" filter="url(#shadow)"/>
+  <text x="320" y="1148" font-size="18" font-weight="bold" fill="#212529" font-family="Arial, sans-serif">Legenda:</text>
+  
+  <ellipse cx="440" cy="1150" rx="40" ry="18" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+  <text x="490" y="1156" font-size="14" fill="#333" font-family="Arial, sans-serif">Korisničke funkcije</text>
+  
+  <ellipse cx="690" cy="1150" rx="40" ry="18" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2"/>
+  <text x="740" y="1156" font-size="14" fill="#333" font-family="Arial, sans-serif">Admin funkcije</text>
+  
+  <ellipse cx="920" cy="1150" rx="40" ry="18" fill="#fff3e0" stroke="#ef6c00" stroke-width="2"/>
+  <text x="970" y="1156" font-size="14" fill="#333" font-family="Arial, sans-serif">Live funkcije</text>
+  
+  <ellipse cx="1140" cy="1150" rx="40" ry="18" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+  <text x="1190" y="1156" font-size="14" fill="#333" font-family="Arial, sans-serif">Include funkcije</text>
+</svg>

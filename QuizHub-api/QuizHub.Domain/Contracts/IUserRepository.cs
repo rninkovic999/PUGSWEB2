@@ -16,6 +16,7 @@ namespace QuizHub.Domain.Contracts
         Task<User?> GetByEmailAsync(string email, CancellationToken cancellationToken);
         Task<User?> GetByUsernameAsync(string username, CancellationToken cancellationToken);
         Task<User?> GetByEmailOrUsernameAsync(string email, string username, CancellationToken cancellationToken);
+        Task<User?> GetUserByUsernameAsync(string username);
         Task<bool> EmailExistsAsync(string email, CancellationToken cancellationToken);
         Task<bool> UsernameExistsAsync(string username, CancellationToken cancellationToken);
         Task<bool> IsValidUserAsync(string username, string passwordHash, CancellationToken cancellationToken);

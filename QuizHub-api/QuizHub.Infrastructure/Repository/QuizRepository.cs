@@ -100,5 +100,13 @@ namespace QuizHub.Infrastructure.Repository
             return await _context.Quizzes
                 .FirstOrDefaultAsync(q => q.Title == title, cancellationToken);
         }
+
+        public Task<List<string>> GetAllTitlesAsync(CancellationToken cancellationToken)
+        {            
+            return _context.Quizzes
+                .Select(q => q.Title)
+                .Distinct()
+                .ToListAsync(cancellationToken);
+        }
     }
 }

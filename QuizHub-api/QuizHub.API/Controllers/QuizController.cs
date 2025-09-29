@@ -9,6 +9,7 @@ using QuizHub.Application.Feature.Quiz.Queries.GetAllQuizzesByCreatedById;
 using QuizHub.Application.Feature.Quiz.Queries.GetQuizWithQuestionsAndAnswersById;
 using QuizHub.Application.Feature.Quiz.Queries.GetQuizWithQuestionsById;
 using QuizHub.Application.Feature.Quiz.Queries.GetQuizzesCategory;
+using QuizHub.Application.Feature.Quiz.Queries.GetQuizzesTitle;
 
 namespace QuizHub.API.Controllers
 {
@@ -112,6 +113,12 @@ namespace QuizHub.API.Controllers
                 }).ToList()
             };
             var result = await Mediator.Send(command, cancellationToken);
+            return Ok(result);
+        }
+        [HttpGet("get-all-titles")]
+        public async Task<IActionResult> GetAlltitlesAsync(CancellationToken cancellationToken)
+        {
+            var result = await Mediator.Send(new GetQuizzesTitleQueryRequest(), cancellationToken);
             return Ok(result);
         }
     }

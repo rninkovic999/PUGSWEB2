@@ -22,6 +22,7 @@ namespace QuizHub.Infrastructure.Data
         public DbSet<Question> Questions { get; set; }
         public DbSet<QuizResult> QuizResults { get; set; }
         public DbSet<UserAnswer> UserAnswers { get; set; }
+        public DbSet<Loby> Lobies { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -90,6 +91,53 @@ namespace QuizHub.Infrastructure.Data
                 .WithOne(qr => qr.Quiz)
                 .HasForeignKey(qr => qr.QuizId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Loby>()
+                .HasOne<User>()
+                .WithMany() 
+                .HasForeignKey(l => l.CreatorId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Loby>()
+                .HasMany(l => l.Participants)
+                .WithMany();
+
+            modelBuilder.Entity<Loby>()
+                .HasOne(l => l.Quiz)
+                .WithMany()
+                .HasForeignKey(l => l.QuizId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            var scoresConverter = new ValueConverter<Dictionary<string, int>, string>(
+                v => JsonSerializer.Serialize(v, (JsonSerializerOptions)null),
+                v => string.IsNullOrWhiteSpace(v)
+                     ? new Dictionary<string, int>()
+                     : JsonSerializer.Deserialize<Dictionary<string, int>>(v, (JsonSerializerOptions)null) ?? new Dictionary<string, int>()
+            );
+
+            var correctAnswersConverter = new ValueConverter<Dictionary<Guid, List<string>>, string>(
+                v => JsonSerializer.Serialize(v, (JsonSerializerOptions)null),
+                v => string.IsNullOrWhiteSpace(v)
+                     ? new Dictionary<Guid, List<string>>()
+                     : JsonSerializer.Deserialize<Dictionary<Guid, List<string>>>(v, (JsonSerializerOptions)null) ?? new Dictionary<Guid, List<string>>()
+            );
+
+
+            // ValueComparer za Dictionary<Guid, List<string>> da EF Core može da prati promene
+            var correctAnswersComparer = new ValueComparer<Dictionary<Guid, List<string>>>(
+                (c1, c2) => c1.Count == c2.Count && !c1.Except(c2).Any(),
+                c => c.Aggregate(0, (a, v) => HashCode.Combine(a, v.Key.GetHashCode(), v.Value.Aggregate(0, (aa, vv) => HashCode.Combine(aa, vv.GetHashCode())))),
+                c => c.ToDictionary(e => e.Key, e => e.Value.ToList())
+            );
+
+            modelBuilder.Entity<Loby>()
+                .Property(l => l.Scores)
+                .HasConversion(scoresConverter);
+
+            modelBuilder.Entity<Loby>()
+                .Property(l => l.CorrectAnswers)
+                .HasConversion(correctAnswersConverter)
+                .Metadata.SetValueComparer(correctAnswersComparer);
         }
     }
 }

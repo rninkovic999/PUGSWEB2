@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace QuizHub.Infrastructure.Repository
@@ -72,6 +73,13 @@ namespace QuizHub.Infrastructure.Repository
                 .Where(u => u.Id == userId)
                 .Select(u => u.ProfilePicture)
                 .FirstOrDefaultAsync(cancellationToken);
+        }
+
+        public async Task<User?> GetUserByUsernameAsync(string username)
+        {
+            return await _context.Users
+                .Where(u => u.Username == username)
+                .FirstOrDefaultAsync();
         }
 
         public async Task<bool> IsValidUserAsync(string username, string passwordHash, CancellationToken cancellationToken)

@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using QuizHub.Domain.Contracts;
 using QuizHub.Infrastructure.Data;
 using QuizHub.Infrastructure.Repository;
+using QuizHub.Infrastructure.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,11 @@ namespace QuizHub.Infrastructure
             services.AddScoped<IQuestionRepository, QuestionRepository>();
             services.AddScoped<IQuizResultRepository, QuizResultRepository>();
             services.AddScoped<IUserAnswerRepository, UserAnswerRepository>();
+            services.AddScoped<ILobyRepository, LobyRepository>();
+            services.AddScoped<ILobbyNotifier, LobbyNotifier>();
+            services.AddHostedService<LobbySchedulerService>();
+            services.AddScoped<IQuestionSenderService, QuestionSenderService>();
+
 
             return services;
         }

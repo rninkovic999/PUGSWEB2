@@ -7,14 +7,38 @@ const difficultyColors = {
   3: { label: "Teško", color: "bg-red-500" },
 };
 
+// Funkcija za proveru admin statusa iz token-a
+const isUserAdmin = () => {
+  try {
+    const token = localStorage.getItem("access_token");
+    if (!token) return false;
+    
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    const role = payload.role || payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+    return role === "Admin";
+  } catch {
+    return false;
+  }
+};
+
 const ListAllQuizzes = ({ quizzes = [] }) => {
   const [localQuizzes, setLocalQuizzes] = useState(quizzes);
   const [error, setError] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     setLocalQuizzes(quizzes);
+    setIsAdmin(isUserAdmin());
   }, [quizzes]);
+
+  const handleLeaderboardClick = (quizId) => {
+    if (isAdmin) {
+      navigate(`/quiz-result/admin/${quizId}`);
+    } else {
+      navigate(`/quiz/${quizId}/leaderboard`);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-900 px-4 py-8">
@@ -61,11 +85,6 @@ const ListAllQuizzes = ({ quizzes = [] }) => {
                       <span className="text-gray-400">Pitanja:</span>
                       <span className="text-white font-medium">
                         {quiz.questionCount}
-                        {quiz.questionCount % 10 === 1 && quiz.questionCount % 100 !== 11
-                          ? "" 
-                          : quiz.questionCount % 10 >= 2 && quiz.questionCount % 10 <= 4 && (quiz.questionCount % 100 < 10 || quiz.questionCount % 100 >= 20)
-                          ? ""
-                          : ""}
                       </span>
                     </div>
                   </div>
@@ -80,10 +99,14 @@ const ListAllQuizzes = ({ quizzes = [] }) => {
                       Počni Kviz
                     </button>
                     <button
-                      className="flex-1 px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors border border-gray-600 hover:border-yellow-400"
-                      onClick={() => navigate(`/quiz/${quiz.id}/leaderboard`)}
+                      className={`flex-1 px-4 py-2 rounded-lg transition-colors font-medium ${
+                        isAdmin 
+                          ? "bg-purple-600 text-white hover:bg-purple-500 border border-purple-500" 
+                          : "bg-gray-700 text-white hover:bg-gray-600 border border-gray-600 hover:border-yellow-400"
+                      }`}
+                      onClick={() => handleLeaderboardClick(quiz.id)}
                     >
-                      Lista
+                      {isAdmin ? "Prosirena rang lista" : "Rang lista"}
                     </button>
                   </div>
                 </div>

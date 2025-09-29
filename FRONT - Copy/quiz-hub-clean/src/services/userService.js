@@ -1,4 +1,5 @@
 import { createRegisterRequestForm } from "../models/registerRequestModel";
+import { createUpdateUserForm } from "../models/updateUserModel";
 
 const API_URL = process.env.REACT_APP_BACKEND_API_URL;
 
@@ -46,19 +47,7 @@ export const getCurrentUser = async () => {
 
 export const updateUser = async (formData) => {
   const token = localStorage.getItem("access_token");
-  const form = new FormData();
-  
-  form.append("Username", formData.Username);
-  form.append("FullName", formData.FullName);
-  form.append("Email", formData.Email);
-  
-  if (formData.Password) {
-    form.append("Password", formData.Password);
-  }
-  
-  if (formData.ProfilePicture) {
-    form.append("ProfilePicture", formData.ProfilePicture);
-  }
+  const form = createUpdateUserForm(formData);
   
   return await fetch(`${API_URL}/users/update`, {
     method: "PUT",

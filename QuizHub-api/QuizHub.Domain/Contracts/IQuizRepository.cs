@@ -17,6 +17,7 @@ namespace QuizHub.Domain.Contracts
         Task<IEnumerable<Quiz>> GetAllQuizzesByCreatedByIdAsync(string createdById, CancellationToken cancellationToken);
         Task<IEnumerable<Quiz>> GetAllQuizzesAsync(CancellationToken cancellationToken);
         Task<List<string>> GetAllCategoriesAsync(CancellationToken cancellationToken);
+        Task<List<string>> GetAllTitlesAsync(CancellationToken cancellationToken);
         Task<IEnumerable<Quiz>> GetAllQuizzesFilteredAsync(string? keyword, string? category, int? difficulty, CancellationToken cancellationToken);
     }
 }
